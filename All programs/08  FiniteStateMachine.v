@@ -10,18 +10,18 @@ always @(posedge clk, negedge reset_b)
 
 	always @(in_x, in_y, state)
   	begin
-    case (state)
-   		S0: if (in_x == 0) next_state = S0;
-    	    else if (in_y == 0) next_state = S3;
-          else next_state = S1;
-   		S1: if (in_x == 0) next_state = S0;
-    	    else next_state = S2;
-    	S2: if (in_x == 0) next_state = S0;
-    	    else next_state = S3;
-   		S3: if (in_x == 0) next_state = S0;
-    	    else next_state = S3;
-    endcase
-    if (state == S0 || state == S1) out_z = 1'b0;
+    	case (state)
+   		S0: 	if (in_x == 0) next_state = S0;
+    	    		else if (in_y == 0) next_state = S3;
+          		else next_state = S1;
+   		S1: 	if (in_x == 0) next_state = S0;
+    	    		else next_state = S2;
+    		S2: 	if (in_x == 0) next_state = S0;
+    	    		else next_state = S3;
+   		S3: 	if (in_x == 0) next_state = S0;
+    	    		else next_state = S3;
+    	endcase
+    	if (state == S0 || state == S1) out_z = 1'b0;
    	else out_z = 1'b1;
    	end
 endmodule
