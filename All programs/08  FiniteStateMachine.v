@@ -8,8 +8,8 @@ parameter S0 = 2'b00, S1 = 2'b01, S2 = 2'b10, S3 = 2'b11;
 always @(posedge clk, negedge reset_b)
 	if (reset_b == 1'b0) state <= S0; else state <= next_state;
 
-	always @(in_x, in_y, state)
-  	begin
+always @(in_x, in_y, state)
+begin
     	case (state)
    		S0: 	if (in_x == 0) next_state = S0;
     	    		else if (in_y == 0) next_state = S3;
@@ -23,5 +23,5 @@ always @(posedge clk, negedge reset_b)
     	endcase
     	if (state == S0 || state == S1) out_z = 1'b0;
    	else out_z = 1'b1;
-   	end
+end
 endmodule
